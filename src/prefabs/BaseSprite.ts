@@ -11,17 +11,17 @@ export default class BaseSprite extends Phaser.Physics.Arcade.Sprite {
 
         if(options.position?.relative) {
             const x = envs.width * options.position.x;
-            const y = envs.height * options.position.x;
+            const y = envs.height * options.position.y;
 
             this.setPosition(x,y);
         }
 
         if(options.anchor) {
-            this.setOrigin(options.anchor.x, options.anchor.y || options.anchor.x);
+            this.setOrigin(options.anchor.x, options.anchor.y);
         }
 
         if(options.scale) {
-            this.setScale(options.scale.x, options.scale.y || options.scale.x);
+            this.setScale(options.scale.x, options.scale.y);
         }
 
         if(options.angle) {
@@ -36,7 +36,8 @@ export default class BaseSprite extends Phaser.Physics.Arcade.Sprite {
 
         if(options.group) {
             const group = scene.getGroup(options.group);
-            group?.add(this);
+            this.setDepth(group?.depth);
+            group?.group.add(this);
         }
     }
 }

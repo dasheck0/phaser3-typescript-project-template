@@ -108,8 +108,8 @@ export default class BaseScene extends Phaser.Scene {
         });
     }
 
-    getGroup(name: string): Phaser.GameObjects.Group {
-        return this.groups.find(group => group.name === name)?.group;
+    getGroup(name: string): GroupDto {
+        return this.groups.find(group => group.name === name);
     }
 
     getScene(name: string): Phaser.Scene {
